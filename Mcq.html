@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>Document</title> 
+  </head> 
+  <body> 
+    <div> 
+      <h1 class="ques">Questions</h1> 
+      <ul> 
+        <li> 
+          <label id="op1" for="ans1">option1</label> 
+          <input class="ans" type="radio" id="ans1" name="ans1" /> 
+        </li> 
+        <li> 
+          <label id="op2" for="ans2">option1</label> 
+          <input class="ans" type="radio" id="ans2" name="ans1" /> 
+        </li> 
+        <li> 
+          <label id="op3" for="ans1">option1</label> 
+          <input class="ans" type="radio" id="ans3" name="ans1" /> 
+        </li> 
+        <li> 
+          <label id="op4" for="ans1">option1</label> 
+          <input class="ans" type="radio" id="ans4" name="ans1" /> 
+        </li> 
+      </ul> 
+      <button id="prev">Previous</button> 
+      <button id="submitQuiz" >Submit</button> 
+    </div> 
+    <div class="showScore"> 
+      <h1>Your score is <span class="board" style="font-size:24px ;"></span></h1> 
+      <button id="playAgain">Play Again</button>   
+    </div> 
+  </body>   <script >     const questions = [ 
+    { 
+      qn: "String manipulators are defined in header file?",       a: "string.h", b: "string", c: "st.h", d: "std.h",       answer: "ans1" 
+    }, 
+    { 
+      qn: "B manipulators are defined in header file?",       a: "string.h",b: "stringnn",c: "st.h",d: "std.h",       answer: "ans2" 
+    }];   let score=0;   const que=document.querySelector(".ques");   const options=document.querySelector(".ans");   const option1=document.querySelector("#op1");   const option2=document.querySelector("#op2");   const option3=document.querySelector("#op3");   const option4=document.querySelector("#op4");   const answers=document.querySelectorAll(".ans");   const previous=document.querySelector('#prev')   const sub=document.querySelector("#submitQuiz");   const again=document.querySelector("#playAgain");   const s_score=document.querySelector(".showScore");   const board=document.querySelector(".board");   let count=0;   let ans;   s_score.style.display='none';   function loadQuestions(){         que.innerText=questions[count].qn;     option1.innerText=questions[count].a;     option2.innerText=questions[count].b;     option3.innerText=questions[count].c;     option4.innerText=questions[count].d;     if(count==0){       previous.style.display="none";       
+    }     else{       previous.style.display="block"; 
+    } 
+       } 
+  loadQuestions();   function checkAnswer(){    answers.forEach( (currElement)=>{     console.log(currElement);     if(currElement.checked){       ans=currElement.id; 
+    }     
+  }) 
+  } 
+  function uncheck(){     answers.forEach((currElement)=>{       currElement.checked=false; 
+    }) 
+  }   
+   previous.addEventListener('click',()=> {     count--;     if(score>0){     score--; 
+    } 
+    loadQuestions(); 
+  }) 
+function showBoard(){   s_score.style.display='block';   board.innerText=" "+score; 
+} 
+sub.addEventListener('click', ()=>{     checkAnswer();     if(ans==questions[count].answer){       score++; 
+    } 
+    uncheck();     count++;     if(count<questions.length){       loadQuestions(); 
+    }     else{       showBoard();       loadQuestions(); 
+    } 
+    console.log(score); 
+  }); 
+   
+  again.addEventListener('click',() =>{     score=0;     count=0;     s_score.style.display='none'; 
+ 
+    loadQuestions(); 
+  }) 
+  </script> 
+</html> 
+

@@ -1,0 +1,25 @@
+.java{
+    color: rgb(255, 0, 0);
+    background: #350ac3;
+}
+#sub{
+    color: aqua;
+}
+tfoot{
+    color: antiquewhite;
+    text-shadow: #350ac3;
+}
+.pay{
+    background-color: red;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+}
+*{
+    background-color: blueviolet;
+}
+form>p{
+    font-weight: bold;
+}
+#sex{
+    font-weight: bold;
+}

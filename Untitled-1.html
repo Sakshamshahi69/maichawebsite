@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title> 
+   <style>     *{     margin: 0;     padding: 0;box-sizing: border-box;     font-size: 30px;     color: black; 
+ 
+} p{     margin-top: 10px;     margin-left: 240px;     font-size: 40px; 
+} button{     width: 50px;     height: 50px;     border-radius: 50px; 
+} 
+.row1,.row2,.row3,.row4{     padding: 10px; 
+} 
+   </style> 
+    <script></script> 
+</head> 
+<body> 
+    <div class="container"> 
+        <input value= "0" class="display" readonly></input > 
+ 
+        <div class="row1"> 
+            <button value ="7"class="button">7</button> 
+            <button class="button" value ="8">8</button> 
+            <button class="button" value ="9">9</button> 
+            <button class="button">+</button> 
+        </div> 
+        <div class="row2"> 
+             
+            <button class="button" value ="4">4</button> 
+            <button class="button" value ="5">5</button> 
+            <button class="button" value ="6">6</button> 
+            <button class="button">-</button> 
+            
+        </div> 
+        <div class="row3"> 
+            <button class="button" value ="1">1</button> 
+            <button class="button" value ="2">2</button> 
+            <button class="button" value ="3">3</button> 
+            <button class="button">*</button> 
+            
+        </div> 
+        <div class="row4"> 
+            <button class="button" value="0">0</button> 
+            <button class="button">.</button> 
+            <button class="button">/</button> 
+            
+            <button class="button">=</button> 
+             
+        </div> 
+        <div class="row5"> 
+            <button class="button">clc</button> 
+        </div> 
+    </div> 
+</body> <script>     let string=" ";     let a=" ";     let choose=""; 
+     
+    const buttons=document.querySelectorAll('.button');     const disp=document.querySelector('.display') 
+  
+    Array.from(buttons).forEach((button)=>{         button.addEventListener('click',(e)=>{ 
+ 
+            if(e.target.innerText == "="){                 a=eval(a);                 disp.value=a; 
+            } 
+            else if(e.target.innerText== "clc"){                 string=0;                 a=" ";                 disp.value=string; 
+            } 
+                         else{ 
+             
+            a=a+e.target.innerText; 
+ 
+            string=e.target.innerText; 
+           
+             
+            disp.value=a;             choose=e.target.innerText; 
+ 
+            if(choose=="+" ||choose=="-"||choose=="/"||choose=="*"){                 disp.value=choose; 
+            }             else{             disp.value=a; 
+            } 
+ 
+            console.log(disp.value) 
+            } 
+        }) 
+    }) 
+    
+</script> 
+</html> 
